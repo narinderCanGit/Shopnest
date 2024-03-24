@@ -1,8 +1,19 @@
+import { Container } from 'react-bootstrap';
+import Header from './components/Header';
+import Footer from './components/Footer';
 
-function App() {
+const App = () => {
   return (
-    <div>Welcome to Shopnest!!</div>
-  )
-}
+    <>
+      <Header/>
+      <main className="py-3">
+        <Container>
+          <div>Welcome to Shopnest!!</div>
+        </Container>
+      </main>
+      <Footer/>
+    </>
+  );
+};
 
-export default App
+export default App;

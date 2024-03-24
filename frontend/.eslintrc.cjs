@@ -17,5 +17,10 @@ module.exports = {
       'warn',
       { allowConstantExport: true },
     ],
-  },
+    "quotes": ["error", "single"],
+    "react/prop-types": 0,
+    "indent": ["error", 2],
+    "linebreak-style": 1,
+    "semi": [2, "always"]  // 2 marks it as an error and 1 as a warning
+  }
 }
