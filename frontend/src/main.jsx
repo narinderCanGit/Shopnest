@@ -12,7 +12,7 @@ import App from './App.jsx';
 import { Provider } from 'react-redux';
 import HomeScreen from './screens/HomeScreen';
 import ProductScreen from './screens/ProductScreen';
-import CartScreen from './screens/Cartscreen';
+import CartScreen from './screens/CartScreen';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
