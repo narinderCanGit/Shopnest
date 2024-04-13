@@ -37,7 +37,7 @@ const orderSchema = new mongoose.Schema({
     },
     itmesPrice: {
         type: Number,
-        required: true,
+        // required: true,
         dafault: 0.0
     },
     taxPrice: {
@@ -57,7 +57,7 @@ const orderSchema = new mongoose.Schema({
     },
     isPaid: {
         type: Boolean,
-        required: true,
+        // required: true,
         dafault: false
     },
     paidAt: {
@@ -65,7 +65,7 @@ const orderSchema = new mongoose.Schema({
     },
     isDelivered:{
         type: Boolean,
-        required: true,
+        // required: true,
         dafault: false 
     },
     deliveredAt: {
