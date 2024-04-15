@@ -41,7 +41,7 @@ const addOrderItems = asyncHandler(async (req, res) => {
 
 // @desc    Get order by ID
 // @route   GET /api/orders/:id
-// @access  Private/admin
+// @access  Private
 const getOrderById = asyncHandler(async (req, res) => {
   const order = await Order.findById(req.params.id).populate(
     'user',  // user schema
