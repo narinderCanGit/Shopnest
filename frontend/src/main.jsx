@@ -5,6 +5,7 @@ import { createBrowserRouter,
   Route,
   RouterProvider
 } from 'react-router-dom';
+import {PayPalScriptProvider} from '@paypal/react-paypal-js';
 import './assets/styles/bootstrap.custom.css';
 import './assets/styles/index.css';
 import { store } from './store';
@@ -41,7 +42,9 @@ const router = createBrowserRouter(
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <Provider store={store}>
-      <RouterProvider router={router} />
+      <PayPalScriptProvider deferLoading={true} >
+        <RouterProvider router={router} />
+      </PayPalScriptProvider>
     </Provider>
   </React.StrictMode>,
 );
