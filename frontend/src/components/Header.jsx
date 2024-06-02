@@ -4,7 +4,7 @@ import { Navbar, Nav, Container, NavDropdown, Badge } from 'react-bootstrap';
 import { FaShoppingCart, FaUser } from 'react-icons/fa';
 import { LinkContainer } from 'react-router-bootstrap';
 import logo from '../assets/logo.png';
-import { useLogoutMutation } from '../slices/userApiSlice';
+import { useLogoutMutation } from '../slices/usersApiSlice';
 import { logout } from '../slices/authSlice';
 
 const Header = () => {
@@ -72,6 +72,9 @@ const Header = () => {
                 <NavDropdown title='Admin' id='adminmenu'>
                   <LinkContainer to='/admin/orderlist'>
                     <NavDropdown.Item>Orders</NavDropdown.Item>
+                  </LinkContainer>
+                  <LinkContainer to='/admin/productlist'>
+                    <NavDropdown.Item>Products</NavDropdown.Item>
                   </LinkContainer>
                 </NavDropdown>
               )}
