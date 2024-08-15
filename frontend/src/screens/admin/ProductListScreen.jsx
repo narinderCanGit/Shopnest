@@ -1,11 +1,10 @@
-import { LinkContainer } from 'react-router-bootstrap';
 import { Table, Button, Row, Col } from 'react-bootstrap';
 import { FaEdit, FaPlus, FaTrash } from 'react-icons/fa';
 import Message from '../../components/Message';
 import Loader from '../../components/Loader';
 import { useCreateProductMutation, useDeleteProductMutation, useGetProductsQuery } from '../../slices/productsApiSlice';
 import { toast } from 'react-toastify';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import Paginate from '../../components/Paginate';
 
 const ProductListScreen = () => {
@@ -82,11 +81,14 @@ const ProductListScreen = () => {
                   <td>{product.category}</td>
                   <td>{product.brand}</td>
                   <td>
-                    <LinkContainer to={`/admin/product/${product._id}/edit`}>
-                      <Button variant='light' className='btn-sm mx-2'>
-                        <FaEdit />
-                      </Button>
-                    </LinkContainer>
+                    <Button
+                      as={Link}
+                      to={`/admin/product/${product._id}/edit`}
+                      variant='light'
+                      className='btn-sm mx-2'
+                    >
+                      <FaEdit />
+                    </Button>
                     <Button
                       variant='danger'
                       className='btn-sm'

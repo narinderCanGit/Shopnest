@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Table, Form, Button, Row, Col } from 'react-bootstrap';
-import { LinkContainer } from 'react-router-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { FaTimes } from 'react-icons/fa';
 
@@ -10,6 +9,7 @@ import Loader from '../components/Loader';
 import { useProfileMutation } from '../slices/usersApiSlice';
 import { useGetMyOrdersQuery } from '../slices/ordersApiSlice';
 import { setCredentials } from '../slices/authSlice';
+import { Link } from 'react-router-dom';
 
 const ProfileScreen = () => {
   const [name, setName] = useState('');
@@ -37,7 +37,6 @@ const ProfileScreen = () => {
     } else {
       try {
         const res = await updateProfile({
-          _id: userInfo._id,
           name,
           email,
           password,
@@ -99,6 +98,7 @@ const ProfileScreen = () => {
           <Button type='submit' variant='primary'>
             Update
           </Button>
+          {loadingUpdateProfile && <Loader />}
         </Form>
       </Col>
       <Col md={9}>
@@ -142,11 +142,14 @@ const ProfileScreen = () => {
                     )}
                   </td>
                   <td>
-                    <LinkContainer to={`/order/${order._id}`}>
-                      <Button className='btn-sm' variant='light'>
-                        Details
-                      </Button>
-                    </LinkContainer>
+                    <Button
+                      as={Link}
+                      to={`/order/${order._id}`}
+                      className='btn-sm'
+                      variant='light'
+                    >
+                      Details
+                    </Button>
                   </td>
                 </tr>
               ))}
