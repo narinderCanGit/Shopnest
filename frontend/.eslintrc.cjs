@@ -3,6 +3,7 @@ module.exports = {
   env: { browser: true, es2020: true },
   extends: [
     'eslint:recommended',
+    "plugin:prettier/recommended",
     'plugin:react/recommended',
     'plugin:react/jsx-runtime',
     'plugin:react-hooks/recommended',
@@ -23,8 +24,8 @@ module.exports = {
     "indent": ["error", 2],
     "linebreak-style": 1,
     "semi": [2, "always"],  // 2 marks it as an error and 1 as a warning
-    "ignoreEOLComments": false,
+    "ignoreEOLComments": 0,
     "no-multi-spaces": "error",
-    "no-console": ["error", { "allow": ["error"] }], 
+    "no-console": ["error", { "allow": ["warn", "error"] }]
   }
 }
