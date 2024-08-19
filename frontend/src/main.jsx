@@ -29,6 +29,7 @@ import ProductEditScreen from './screens/admin/ProductEditScreen.jsx';
 import UserListScreen from './screens/admin/UserListScreen.jsx';
 import UserEditScreen from './screens/admin/UserEditScreen.jsx';
 import { HelmetProvider } from 'react-helmet-async';
+import MyErrorBoundary from './components/ErrorBoundary.jsx';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -45,8 +46,8 @@ const router = createBrowserRouter(
         <Route path='/shipping' element={<ShippingScreen/>} />
         <Route path='/payment' element={<PaymentScreen/>} /> 
         <Route path='/placeorder' element={<PlaceOrderScreen />} />
-        <Route path='/order/:id' element={<OrderScreen />} />
-        <Route path='/profile' element={<ProfileScreen />} />
+        <Route path='/order/:id' element={<MyErrorBoundary> <OrderScreen /> </MyErrorBoundary>}/>
+        <Route path='/profile' element={<MyErrorBoundary> <ProfileScreen /> </MyErrorBoundary>} />
       </Route>
       {/* Admin users */}
       <Route path='' element={<AdminRoute />}>
@@ -65,7 +66,9 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <HelmetProvider>
       <Provider store={store}>
         <PayPalScriptProvider deferLoading={true} >
-          <RouterProvider router={router} />
+          <MyErrorBoundary>
+            <RouterProvider router={router} />
+          </MyErrorBoundary>
         </PayPalScriptProvider>
       </Provider>
       </HelmetProvider>

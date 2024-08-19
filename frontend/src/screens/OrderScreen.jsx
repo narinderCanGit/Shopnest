@@ -23,6 +23,8 @@ const OrderScreen = () => {
     error,
   } = useGetOrderDetailsQuery(orderId);
 
+  console.log(order);
+
   const [payOrder, { isLoading: loadingPay }] = usePayOrderMutation();
 
   const [deliverOrder, { isLoading: loadingDeliver }] = useDeliverOrderMutation();
@@ -105,11 +107,11 @@ const OrderScreen = () => {
             <ListGroup.Item>
               <h2>Shipping</h2>
               <p>
-                <strong>Name: </strong> {order.user.name}
+                <strong>Name: </strong> {order?.user?.name}
               </p>
               <p>
                 <strong>Email: </strong>{' '}
-                <a href={`mailto:${order.user.email}`}>{order.user.email}</a>
+                <a href={`mailto:${order?.user?.email}`}>{order?.user?.email}</a>
               </p>
               <p>
                 <strong>Address:</strong>
@@ -150,15 +152,15 @@ const OrderScreen = () => {
                       <Row>
                         <Col md={1}>
                           <Image
-                            src={item.image}
-                            alt={item.name}
+                            src={item?.image}
+                            alt={item?.name}
                             fluid
                             rounded
                           />
                         </Col>
                         <Col>
                           <Link to={`/product/${item.product}`}>
-                            {item.name}
+                            {item?.name}
                           </Link>
                         </Col>
                         <Col md={4}>
