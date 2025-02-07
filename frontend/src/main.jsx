@@ -28,6 +28,7 @@ import ProductListScreen from './screens/admin/ProductListScreen.jsx';
 import ProductEditScreen from './screens/admin/ProductEditScreen.jsx';
 import UserListScreen from './screens/admin/UserListScreen.jsx';
 import UserEditScreen from './screens/admin/UserEditScreen.jsx';
+import ForgotPasswordScreen from './screens/ForgotPasswordScreen.jsx';
 import { HelmetProvider } from 'react-helmet-async';
 import MyErrorBoundary from './components/ErrorBoundary.jsx';
 
@@ -42,6 +43,7 @@ const router = createBrowserRouter(
       <Route path='/cart' element={<CartScreen/>} /> 
       <Route path='/login' element={<LoginScreen/>} /> 
       <Route path='/register' element={<RegisterScreen/>} /> 
+      <Route path='/forgotPassword' element={<ForgotPasswordScreen/>} /> 
       <Route path='' element={<PrivateRoute/>}>
         <Route path='/shipping' element={<ShippingScreen/>} />
         <Route path='/payment' element={<PaymentScreen/>} /> 

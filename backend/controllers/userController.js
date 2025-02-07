@@ -58,6 +58,38 @@ const registerUser = asyncHandler(async (req, res) => {
     }
 });
 
+// @desc    User forgot password
+// @route   POST /api/users/forgotPassword
+// @access  Public
+const forgotPasswordUser = asyncHandler(async (req, res) => {
+  const { email, password } = req.body;
+
+  const user = await User.findOne({ email });
+
+  if (!user) {
+    res.status(400);
+    throw new Error('User doesnot exists');
+  }
+
+  if (password) {
+    user.password = password;
+  }
+
+  const updatedUser = await user.save();
+
+  if (updatedUser) {
+    res.status(201).json({
+      _id: updatedUser._id,
+      name: updatedUser.name,
+      email: updatedUser.email,
+      isAdmin: updatedUser.isAdmin,
+    });
+  } else {
+    res.status(400);
+    throw new Error('Invalid user data');
+  }
+});
+
 // @desc    Logout user / clear cookie
 // @route   POST /api/users/logout
 // @access  Public
@@ -182,6 +214,7 @@ const updateUser = asyncHandler(async (req, res) => {
 export {
   authUser,
   registerUser,
+  forgotPasswordUser,
   logoutUser,
   getUserProfile,
   updateUserProfile,
